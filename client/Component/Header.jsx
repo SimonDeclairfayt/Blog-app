@@ -1,6 +1,4 @@
-import Header from "../Component/Header";
-
-function App() {
+function Header() {
   return (
     <div className="header">
       <div className="header-nav">
@@ -25,4 +23,4 @@ function App() {
   );
 }
 
-export default App;
+export default Header;
