@@ -1,42 +1,86 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Advent Pro", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  font-variation-settings: "wdth" 100;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+.header {
+  height: 10vh;
+  padding: 10px 15px;
+  background-color: rgb(251, 247, 240);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
+.header-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 25vw;
+  h1 {
+    width: 2.5em;
   }
-  to {
-    transform: rotate(360deg);
+  nav .header-category {
+    width: 12.5vw;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    li {
+      color: #555555;
+      list-style: none;
+    }
   }
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
+.header-right {
+  display: flex;
+  gap: 15px;
+  width: 35vw;
+  form {
+    border: solid 2px black;
+    border-radius: 10px;
+    padding: 2.5px 1.25px;
+    display: flex;
+    align-items: center;
+    width: 20vw;
+    height: 100%;
+    input {
+      padding-left: 10px;
+      border: none;
+      background: transparent;
+      width: 90%;
+      height: 100%;
+    }
+    input:focus {
+      outline: none;
+    }
+    img {
+      height: 10%;
+      width: 10%;
+    }
+  }
+  button {
+    background: transparent;
+    width: 100px;
+    padding: 5px 10px;
+    border-radius: 10px;
+    border: solid 2px black;
+  }
+  button:hover {
+    cursor: pointer;
+    border: solid 2.5px black;
+    background-color: rgb(205, 201, 195, 0.25);
   }
 }
 
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
+.no {
+  background-color: #d9e4dd;
+  height: 50vh;
 }
