@@ -6,23 +6,33 @@ function Latest() {
       <h2>Latest</h2>
       <div className="latest-caroussel">
         <div className="caroussel-card">
-          <img src="/bascket.png" alt="" />
+          <div className="card-img">
+            <img src="/bascket.png" alt="" />
+          </div>
           <h3>card title</h3>
         </div>
         <div className="caroussel-card">
-          <img src="/bascket.png" alt="" />
+          <div className="card-img">
+            <img src="/bascket.png" alt="" />
+          </div>
           <h3>card title</h3>
         </div>
         <div className="caroussel-card">
-          <img src="/bascket.png" alt="" />
+          <div className="card-img">
+            <img src="/bascket.png" alt="" />
+          </div>
           <h3>card title</h3>
         </div>
         <div className="caroussel-card">
-          <img src="/bascket.png" alt="" />
+          <div className="card-img">
+            <img src="/bascket.png" alt="" />
+          </div>
           <h3>card title</h3>
         </div>
         <div className="caroussel-card">
-          <img src="/bascket.png" alt="" />
+          <div className="card-img">
+            <img src="/bascket.png" alt="" />
+          </div>
           <h3>card title</h3>
         </div>
       </div>
