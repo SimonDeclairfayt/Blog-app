@@ -10,7 +10,8 @@
 }
 
 .blogpage-bloc {
-  background-color: #d9e4dd;
+  color: white;
+  background-color: #222831;
   padding: 100px 260px;
 }
 
@@ -56,7 +57,8 @@
     display: flex;
     gap: 12.5px;
     li .bloc-info-author {
-      background-color: rgb(251, 247, 240, 0.75);
+      background-color: #393e46;
+      color: white;
     }
   }
 }
@@ -69,7 +71,8 @@ li {
   display: flex;
   align-items: center;
   justify-content: space-evenly;
-  background-color: #fbf7f0;
+  background-color: #ffd369;
+  color: black;
   width: 130px;
   height: 30px;
   border-radius: 10px;
@@ -87,6 +90,9 @@ li {
     display: flex;
     align-items: center;
     gap: 4.5px;
+    img:hover {
+      cursor: pointer;
+    }
     .heart {
       background-image: url("../public/heart.png");
     }

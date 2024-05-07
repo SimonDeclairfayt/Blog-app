@@ -34,7 +34,7 @@
   width: 100vw;
   height: 10vh;
   padding: 15px 30px;
-  background-color: rgb(251, 247, 240);
+  background-color: #eeeeee;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -110,11 +110,11 @@
     width: 100px;
     padding: 5px 10px;
     border-radius: 10px;
-    border: solid 2px black;
+    border: solid 1px black;
   }
   button:hover {
     cursor: pointer;
     border: solid 2.5px black;
-    background-color: rgb(205, 201, 195, 0.25);
+    background-color: #ffd369;
   }
 }
