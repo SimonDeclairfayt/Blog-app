@@ -17,7 +17,7 @@
 .gtsya {
     padding-bottom: 25px;
     font-size: 20px;
-
+text-align: center;
 }
 
 h1 {
@@ -72,11 +72,11 @@ input[type="password"]:focus {
     border: none; /* Remove border */
     border-radius: 5px; /* Rounded corners */
     font-size: 18px; /* Font size */
+    font-weight: 700;
     cursor: pointer; /* Cursor style on hover */
     transition: background-color 0.3s ease, transform 0.3s ease; /* Smooth color and transform transition on hover */
-    font-size: 26px;
-    margin-top: 25px;
-    font-weight: 650;
+    font-size: 30px;
+    margin-top: 35px;
 }
 
 .submitbutton:hover {
