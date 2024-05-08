@@ -2,3 +2,6 @@ djangorestframework
 django
 python-dotenv
 psycopg
+django-rest-auth
+django-allauth
+django-cors-headers
