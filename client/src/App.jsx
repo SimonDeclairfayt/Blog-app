@@ -1,19 +1,20 @@
-import React from 'react'
-import './App.css'
-import Login from './components/Login/Login.jsx'
-import Register from './components/Register/Register.jsx'
-import Dashboard from './components/Dashboard/Dashboard.jsx'
-import { BrowserRouter as Router } from 'react-router-dom';
-
-
-
+import React from 'react';
+import './App.css';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Dashboard from './components/Dashboard/Dashboard';
+import BlogPost from './components/BlogPost/BlogPost';
+import Settings from './components/Settings/Settings'; // Import the Settings component
 
 const App = () => {
   return (
     <Router>
-    <Dashboard></Dashboard>
+      <Routes>
+        <Route path="/" element={<Dashboard />} />
+        <Route path="/blogpost" element={<BlogPost />} />
+        <Route path="/settings" element={<Settings />} /> {/* Route for the Settings component */}
+      </Routes>
     </Router>
-  )
+  );
 }
 
-export default App
+export default App;

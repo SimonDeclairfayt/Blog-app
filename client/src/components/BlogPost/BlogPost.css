@@ -10,6 +10,10 @@
     color: white;
 }
 
+.content-container {
+    display: flex;
+}
+
 .leftsidebar {
     background-color: #393E46;
     height: 100vh;
@@ -19,9 +23,22 @@
     justify-content: space-between;
 }
 
-.sidebar-content {
-    flex: 1;
+.rightsidecontainer {
+    /* flex: 1; */
+    background-color: #222831;
+    padding: 20px;
+    color: white;
 }
+
+.title-textarea {
+    padding-left: 24px;
+
+}
+
+.canp {
+    padding-left: 24px;
+}
+
 
 h1 {
     text-align: center;

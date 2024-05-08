@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './Register.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faArrowRightToBracket, faUser } from '@fortawesome/free-solid-svg-icons'; // Import the envelope icon
+import { faArrowRightToBracket, faUser } from '@fortawesome/free-solid-svg-icons';
 const Register = () => {
 
     const [email, setEmail] = useState('');
