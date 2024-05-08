@@ -1,0 +1,3 @@
+create_tables.sql
+*.env
+blogEnv/

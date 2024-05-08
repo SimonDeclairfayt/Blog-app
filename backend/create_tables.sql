@@ -7,7 +7,6 @@ CREATE TABLE users(
 );
 CREATE TABLE blogs(
 	id serial PRIMARY KEY,
-	user_id integer NOT NULL,
 	date_created TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
 );
 CREATE TABLE blog_content(
