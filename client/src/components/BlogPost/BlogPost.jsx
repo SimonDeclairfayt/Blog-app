@@ -6,10 +6,31 @@ import { faUser, faNewspaper, faGear, faArrowRightFromBracket } from '@fortaweso
 
 const BlogPost = () => {
     const [title, setTitle] = useState('');
+    const [description, setDescription] = useState('');
+    const [imageUrl, setImageUrl] = useState('');
 
     const handleTitleChange = (e) => {
         setTitle(e.target.value);
     };
+
+    const handleDescriptionChange = (e) => {
+        setDescription(e.target.value);
+    };
+
+    const handleImageUrlChange = (e) => {
+        setImageUrl(e.target.value);
+    };
+
+    const handleImageUpload = () => {
+        // Fetch the image from the provided URL and handle the upload process
+        // Here you can implement the logic to fetch the image and store it in your app
+        // For simplicity, let's just set the image URL for now
+        // You can replace this with your actual image upload logic
+        // For example:
+        // setImageUrl('URL_OF_THE_UPLOADED_IMAGE');
+        alert('Image uploaded successfully!');
+    };
+
 
     return (
         <div className='dashcontainer'>
@@ -30,15 +51,35 @@ const BlogPost = () => {
                 </div>
                 <div className='rightsidecontainer'>
                     <h2 className='canp'>Create a new post</h2>
-                    <h3>Title</h3>
-                    <textarea 
+                    <h3 className='tt'>Title:</h3>
+                    <input
                         className="title-textarea" 
                         placeholder="Enter title here..." 
                         value={title} 
                         onChange={handleTitleChange} 
                     />
-                    <div>
-                        {/* {title && <h2>{title}</h2>} PREVIEW FEATURE*/ }
+                    <h3 className='cyi'>Choose your image</h3>
+                    <input 
+                        type="text" 
+                        className="image-url-input" 
+                        placeholder="Enter image URL here..." 
+                        value={imageUrl} 
+                        onChange={handleImageUrlChange} 
+                    />
+                    <button onClick={handleImageUpload}>Upload Image</button>
+                    <h3 className='tt'>Write your description:</h3>
+                    <textarea
+                        type="text" 
+                        className="description-input" 
+                        placeholder="Enter description here..." 
+                        value={description} 
+                        onChange={handleDescriptionChange} 
+                    />
+                    <div className='preview'>
+                        <h3 className='prv'>Preview : </h3>
+                         {title && <h2>{title}</h2>} 
+                         {imageUrl && <img src={imageUrl} alt="Uploaded" className='uploadimage' />}
+                         {description &&<p>{description}</p>} 
                     </div>
                 </div>
             </div>

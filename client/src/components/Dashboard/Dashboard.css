@@ -6,13 +6,13 @@
 
 .dashcontainer {
     background-color: #222831;
-    height: 100vh;
+    /* height: 100vh; */
     color: white;
 }
 
 .leftsidebar {
-    background-color: #393E46;
-    height: 100vh;
+    background-color: #0e2d60;
+    /* height: 100vh; */
     width: 250px;
     display: flex;
     flex-direction: column;
