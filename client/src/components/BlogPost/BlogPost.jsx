@@ -5,9 +5,15 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser, faNewspaper, faGear, faArrowRightFromBracket } from '@fortawesome/free-solid-svg-icons';
 
 const BlogPost = () => {
+    const [file, setFile] = useState();
     const [title, setTitle] = useState('');
     const [description, setDescription] = useState('');
     const [imageUrl, setImageUrl] = useState('');
+
+    function handleChange(e) {
+        console.log(e.target.files);
+        setFile(URL.createObjectURL(e.target.files[0]));
+    }
 
     const handleTitleChange = (e) => {
         setTitle(e.target.value);
@@ -59,14 +65,9 @@ const BlogPost = () => {
                         onChange={handleTitleChange} 
                     />
                     <h3 className='cyi'>Choose your image</h3>
-                    <input 
-                        type="text" 
-                        className="image-url-input" 
-                        placeholder="Enter image URL here..." 
-                        value={imageUrl} 
-                        onChange={handleImageUrlChange} 
-                    />
-                    <button onClick={handleImageUpload}>Upload Image</button>
+                    <input type="file" onChange={handleChange} />
+                    <img src={file} />
+                    {/* <button onClick={handleImageUpload}>Upload Image</button> */}
                     <h3 className='tt'>Write your description:</h3>
                     <textarea
                         type="text" 
