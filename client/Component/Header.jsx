@@ -1,6 +1,4 @@
-import Header from "../Component/Header";
-
-function App() {
+function Header() {
   return (
     <div className="header">
       <div className="header-nav">
@@ -16,7 +14,7 @@ function App() {
       <div className="header-right">
         <form action="submit">
           <input type="text" />
-          <img src="../public/icons-search.svg" alt="" />
+          <img src="../public/icon-loupe-white.svg" alt="" />
         </form>
         <button className="register">Register</button>
         <button className="login">Login</button>
@@ -25,4 +23,4 @@ function App() {
   );
 }
 
-export default App;
+export default Header;

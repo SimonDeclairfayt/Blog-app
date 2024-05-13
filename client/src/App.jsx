@@ -1,19 +1,26 @@
-import React from 'react';
-import './App.css';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Dashboard from './components/Dashboard/Dashboard';
+
+import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
+import Header from "../Component/Header";
+import Blogpage from "../Component/Blogpage";
+import Home from "../Component/Home";
+import "./App.css";
 import BlogPost from './components/BlogPost/BlogPost';
-import Settings from './components/Settings/Settings'; // Import the Settings component
+import Settings from './components/Settings/Settings'; 
 
 const App = () => {
   return (
-    <Router>
-      <Routes>
-        <Route path="/" element={<Dashboard />} />
-        <Route path="/blogpost" element={<BlogPost />} />
-        <Route path="/settings" element={<Settings />} /> {/* Route for the Settings component */}
-      </Routes>
-    </Router>
+
+    <>
+      <Router>
+        <Header />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/blogpost" element={<BlogPost />} />
+          <Route path="/settings" element={<Settings />} />
+        </Routes>
+      </Router>
+    </>
+
   );
 }
 
