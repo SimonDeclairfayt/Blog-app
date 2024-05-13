@@ -34,7 +34,7 @@
     img {
       height: 100%;
       width: 100%;
-      object-fit: fill;
+      object-fit: cover;
     }
   }
 
@@ -117,7 +117,7 @@ li {
     width: 100%;
     height: 125px;
     max-height: 125px;
-    border-radius: 11.5px;
+    border-radius: 10px;
     border: none;
     background-color: #eeeeee;
     padding: 15px 10px;
@@ -131,6 +131,7 @@ li {
   margin-top: 15px;
   h2 {
     font-weight: 700;
+    color: #ffd369;
   }
   .latest-caroussel {
     margin-top: 7.5px;
@@ -154,7 +155,7 @@ li {
         overflow: hidden;
         height: 85%;
         width: 100%;
-        border-radius: 15px;
+        border-radius: 20px;
         overflow: hidden;
         img {
           height: 100%;
@@ -167,8 +168,9 @@ li {
         }
       }
     }
-    .caroussel-card {
+    .caroussel-card:hover {
       cursor: pointer;
+      color: #ffd369;
     }
   }
 }

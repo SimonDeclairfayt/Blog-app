@@ -14,7 +14,7 @@ function Header() {
       <div className="header-right">
         <form action="submit">
           <input type="text" />
-          <img src="../public/icons-search.svg" alt="" />
+          <img src="../public/icon-loupe-white.svg" alt="" />
         </form>
         <button className="register">Register</button>
         <button className="login">Login</button>

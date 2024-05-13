@@ -12,7 +12,6 @@ function Blogpage() {
 
   return (
     <>
-      <Header />
       <div className="blogpage-bloc">
         <div className="bloc-head">
           <h2>
