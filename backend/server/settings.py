@@ -1,20 +1,17 @@
 from pathlib import Path
 import os
-import environ
-env = environ.Env()
-environ.Env.read_env()
+from dotenv import load_dotenv
+load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-MEDIA_URL = '/media/'
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = env("SECRET_KEY")
+SECRET_KEY = os.getenv("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -38,7 +35,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'blogs',
     'rest_framework',
-    'rest_framework.authtoken'
+    'rest_framework.authtoken',
+    'cloudinary',
+    'cloudinary_storage'
 ]
 
 AUTH_USER_MODEL = 'blogs.User'
@@ -81,11 +80,11 @@ WSGI_APPLICATION = 'server.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME':env("POSTGRES_DB"),
-        'USER':env("POSTGRES_USER"),
-        'PASSWORD': env("POSTGRES_PASSWORD"),
-        'HOST': '127.0.0.1', 
-        'PORT': env("POSTGRES_PORT"),
+        'NAME':os.getenv("POSTGRES_DB"),
+        'USER':os.getenv("POSTGRES_USER"),
+        'PASSWORD': os.getenv("POSTGRES_PASSWORD"),
+        'HOST': os.getenv("POSTGRES_HOST"), 
+        'PORT': os.getenv("POSTGRES_PORT"),
     }
 }
 
@@ -130,3 +129,10 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+CLOUDINARY_STORAGE={
+    "CLOUD_NAME":os.getenv("CLOUD_NAME"),
+    "API_KEY":os.getenv("CLOUDINARY_API_KEY"),
+    "API_SECRET":os.getenv("CLOUDINARY_API_SECRET")
+}
+DEFAULT_FILE_STORAGE= 'cloudinary_storage.storage.MediaCloudinaryStorage'

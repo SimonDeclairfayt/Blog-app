@@ -2,7 +2,7 @@ from django.db import models
 from django.contrib.auth.models import AbstractBaseUser,BaseUserManager
 from django.contrib.postgres.fields import ArrayField
 
-DEFAULT_PROFILE_PIC="/profile-pics/default.jpg"
+DEFAULT_PROFILE_PIC="https://res.cloudinary.com/hzrmzkuce/image/upload/v1/media/profile-pics/default_b1yap4"
 
 # My Blogs table
 class Blogs(models.Model):
@@ -29,7 +29,7 @@ class CustomUserManager(BaseUserManager):
 class User(AbstractBaseUser):
     email = models.EmailField(unique=True)
     username = models.CharField(max_length=255, unique=True)
-    picture_url = models.ImageField(upload_to="profile-pics/",default=DEFAULT_PROFILE_PIC, blank=True)
+    picture_url = models.ImageField(upload_to="media/profile-pics/",default=DEFAULT_PROFILE_PIC, blank=True)
 
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = ["username"]
