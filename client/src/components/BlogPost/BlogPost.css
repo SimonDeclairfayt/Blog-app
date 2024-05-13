@@ -1,0 +1,131 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+.dashcontainer {
+    background-color: #222831;
+    color: white;
+}
+
+.content-container {
+    display: flex;
+}
+
+.leftsidebar {
+    background-color: #393E46;
+    /* height: 100vh; */
+    width: 250px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 100vh; /* Adjust height as needed */
+
+}
+
+.rightsidecontainer {
+    min-height: calc(100vh - 100px); /* Assuming header height is 100px, adjust as needed */
+    flex: 1;
+    background-color: #222831;
+    padding: 20px;
+    color: white;
+    padding-left: 50px;
+}
+
+.tt {
+    padding-top: 45px;
+    padding-bottom: 4px;
+}
+
+.preview {
+    padding-top: 45px;
+    padding-bottom: 10px; /* Remove bottom padding */
+}
+
+.uploadimage {
+    width: 400px;
+    display: flex;
+    align-items: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+/* .description {
+    padding-top: 500px;
+} */
+
+.prv {
+    padding-bottom: 10px;
+}
+
+.title-textarea {
+    padding-left: 2px;
+    border-radius: 5px;
+}
+.description-input {
+    padding-left: 2px;
+    border-radius: 5px;
+}
+
+h1 {
+    text-align: center;
+    font-size: 40px;
+    padding-top: 10px;
+}
+
+.cyi {
+    padding-top: 45px;
+    padding-bottom: 10px;
+}
+
+.sidebar-link {
+    text-decoration: none;
+    color: white;
+    line-height: 100px;
+    padding-left: 16px;
+    font-size: 20px;
+    font-weight: 600;
+    transition: color 0.3s ease; /* Smooth transition for color change */
+}
+
+.sidebar-link:hover {
+    color: #aeaeae; /* Change color on hover */
+}
+
+.logout-container {
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+}
+
+.logoutlink {
+    text-decoration: none;
+    color: white;
+    padding-left: 24px;
+    font-size: 20px;
+    font-weight: 600;
+    transition: color 0.3s ease; /* Smooth transition for color change */
+}
+
+.logoutlink:hover {
+    color: #aeaeae; /* Change color on hover */
+}
+
+.separator-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+    border-radius: 2px;
+}
+
+.separator {
+    width: 80%;
+    border: none;
+    border-top: 1px solid #eeeeee;
+    border-radius: 20px;
+}
+
+.icon {
+    padding-right: 8px;
+}
