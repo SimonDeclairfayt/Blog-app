@@ -9,6 +9,8 @@ import Dashboard from './components/Dashboard/Dashboard';
 import Profile from './components/Profile/Profile';
 import Register from './components/Register/Register';
 import Login from './components/Login/Login';
+import Categorys from "../Component/Categorys";
+import Latest from "../Component/Latest";
 
 
 const App = () => {
@@ -18,14 +20,15 @@ const App = () => {
       <Router>
         <Header />
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route path="/home" element={<Home />} />
           <Route path="/blogpost" element={<BlogPost />} />
           <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/categorys" element={<Categorys />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />
           <Route path="/blogpage" element={<Blogpage />} />
-
+          <Route path="/latest" element={<Latest />} />
 
         </Routes>
       </Router>
