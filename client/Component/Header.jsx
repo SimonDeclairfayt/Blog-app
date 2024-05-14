@@ -1,34 +1,14 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 function Header() {
-  const [close, setClose] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(true);
 
-  const [isHeaderVisible, setIsHeaderVisible] = useState(true);
-
-  const handleClick = () => {
-    setIsHeaderVisible(!isHeaderVisible);
-  };
   return (
-    <div
-      className="header"
-      //style={{ height: isHeaderVisible ? "100vh" : "10vh" }}
-    >
-      <div
-        className="header-nav"
-        //style={{ height: isHeaderVisible ? "60vh" : "10vh" }}
-      >
-        <h1
-          id="title"
-          /**style={{
-            cursor: "pointer",
-          }}
-          onClick={handleClick}**/
-        >
-          Sport-Blog
-        </h1>
-        <nav /**</div>style={{ display: isHeaderVisible ? "block" : "none" }}**/
-        >
-          <ul className="header-category">
+    <div className="header">
+      <div className="header-nav">
+        <h1 id="title">Sport-Blog</h1>
+        <nav className={menuOpen ? "open" : "header-category"}>
+          <ul>
             <Link to={"/"}>
               <li>Home</li>
             </Link>
@@ -41,10 +21,12 @@ function Header() {
           </ul>
         </nav>
       </div>
-      <div
-        className="header-right"
-        //style={{ display: isHeaderVisible ? "block" : "none" }}
-      >
+      <div className="header-menu" onClick={() => setMenuOpen(!menuOpen)}>
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <div className={menuOpen ? "open" : "header-right"}>
         <form action="submit">
           <input type="text" />
           <img src="../public/icon-loupe-white.svg" alt="" />
