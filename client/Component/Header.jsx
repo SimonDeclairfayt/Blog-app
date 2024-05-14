@@ -11,22 +11,23 @@ function Header() {
   return (
     <div
       className="header"
-      style={{ height: isHeaderVisible ? "100vh" : "10vh" }}
+      //style={{ height: isHeaderVisible ? "100vh" : "10vh" }}
     >
       <div
         className="header-nav"
-        style={{ height: isHeaderVisible ? "60vh" : "10vh" }}
+        //style={{ height: isHeaderVisible ? "60vh" : "10vh" }}
       >
         <h1
           id="title"
-          style={{
+          /**style={{
             cursor: "pointer",
           }}
-          onClick={handleClick}
+          onClick={handleClick}**/
         >
           Sport-Blog
         </h1>
-        <nav style={{ display: isHeaderVisible ? "block" : "none" }}>
+        <nav /**</div>style={{ display: isHeaderVisible ? "block" : "none" }}**/
+        >
           <ul className="header-category">
             <Link to={"/"}>
               <li>Home</li>
@@ -42,7 +43,7 @@ function Header() {
       </div>
       <div
         className="header-right"
-        style={{ display: isHeaderVisible ? "block" : "none" }}
+        //style={{ display: isHeaderVisible ? "block" : "none" }}
       >
         <form action="submit">
           <input type="text" />

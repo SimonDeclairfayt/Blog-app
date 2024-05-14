@@ -148,7 +148,7 @@
     color: #393e46;
   }
 }
-
+/**
 @media screen and (max-width: 430px) {
   .header {
     height: 100vh;
@@ -212,3 +212,4 @@
     }
   }
 }
+**/
