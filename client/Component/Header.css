@@ -5,7 +5,7 @@
     }
 
     .header-category {
-        font-weight: 800;
+        font-weight: 00;
         font-size: 5;
     }
 
@@ -17,7 +17,6 @@
 
     li {
         margin-left: 40px;
-        font-weight: 600;
         font-size: 22px;
     }
 
@@ -38,18 +37,22 @@
   
 
     .login {
-        font-weight: 700;
+        font-weight: 600;
         font-size: 18px;
         margin-left: 15px;
         /* margin-right: 15px;  */
+        margin-top: 5px;
+        margin-bottom: 5px;
+
     }
 
     .register {
-        font-weight: 700;
+        font-weight: 600;
         font-size: 18px;
         margin-left: 15px;
         /* margin-right: 15px; */
-        
+        margin-top: 5px;
+        margin-bottom: 5px;
     }
 
     .header-right {
@@ -59,7 +62,7 @@
 
     .search-input {
         padding: 10px;
-        border: 2px solid #ccc; /* Adjust the border size */
+        border: 1px solid #ffffff; /* Adjust the border size */
         border-radius: 5px;
         font-size: 16px;
         outline: none; /* Remove default outline */
@@ -83,4 +86,3 @@
       .register-link:hover {
         background-color: #0056b3;
       }
-      

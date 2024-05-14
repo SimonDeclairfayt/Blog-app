@@ -31,16 +31,6 @@ const BlogPost = () => {
         setImageUrl(e.target.value);
     };
 
-    const handleImageUpload = () => {
-        // Fetch the image from the provided URL and handle the upload process
-        // Here you can implement the logic to fetch the image and store it in your app
-        // For simplicity, let's just set the image URL for now
-        // You can replace this with your actual image upload logic
-        // For example:
-        // setImageUrl('URL_OF_THE_UPLOADED_IMAGE');
-        alert('Image uploaded successfully!');
-    };
-
     return (
         <div className='dashcontainer'>
             <div className='content-container'>
@@ -72,12 +62,12 @@ const BlogPost = () => {
                     <div id="editor">
                         <FroalaEditorComponent tag='textarea'/>
                     </div>
-                    <div className='preview'>
+                    {/* <div className='preview'>
                         <h3 className='prv'>Preview : </h3>
                          {title && <h2 className='prvtitle'>{title}</h2 >} 
                          <img src={file} className="preview-image" />
                          {description &&<p className='pdesc'>{description}</p>} 
-                    </div>
+                    </div> */}
                     <button type='submit' className='syp'>Submit your post !</button>
                 </div>
             </div>

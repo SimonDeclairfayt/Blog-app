@@ -9,7 +9,7 @@ const Profile = () => {
   const profile = {
     username: 'Argjent Latifi',
     email: 'argjent@becode.org',
-    profilePicture: 'https://sm.ign.com/ign_fr/cover/a/avatar-gen/avatar-generations_bssq.jpg'
+    profilePicture: 'https://cdn-icons-png.flaticon.com/512/147/147144.png'
   };
 
   return (
