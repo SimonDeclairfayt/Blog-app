@@ -10,14 +10,15 @@
     align-items: center;
     justify-content: center;
     font-weight: 400;
-    background-color: rgb(217, 228, 221);
+    background-color: #222831;
     height: 100vh;
+    color: white;;
 }
 
 .gtsya {
     padding-bottom: 25px;
     font-size: 20px;
-
+text-align: center;
 }
 
 h1 {
@@ -30,7 +31,7 @@ h1 {
     flex-direction: column;
     align-items: center;
     /* justify-content: center; */
-    background-color: rgb(251, 247, 240);
+    background-color: #393E46;
     width: 370px;
     height: 475px;
     padding: 20px;
@@ -56,7 +57,7 @@ input[type="password"] {
   border-radius: 5px;
   font-size: 16px;
   width: 250px;
-  background-color: #D9E4DD;
+  background-color: #393E46;
 }
 
 input[type="email"]:focus,
@@ -66,21 +67,21 @@ input[type="password"]:focus {
 }
 
 .submitbutton {
-    background-color: #D9E4DD; /* Blue background color */
-    color: black; /* Black text color */
+    background-color: #293140; /* Blue background color */
+    color: rgb(255, 255, 255); /* Black text color */
     padding: 14px 26px; /* Padding around the text */
     border: none; /* Remove border */
     border-radius: 5px; /* Rounded corners */
     font-size: 18px; /* Font size */
+    font-weight: 700;
     cursor: pointer; /* Cursor style on hover */
     transition: background-color 0.3s ease, transform 0.3s ease; /* Smooth color and transform transition on hover */
-    font-size: 26px;
-    margin-top: 25px;
-    font-weight: 650;
+    font-size: 30px;
+    margin-top: 35px;
 }
 
 .submitbutton:hover {
-    background-color: #aab6af; /* Darker blue on hover */
+    background-color: #45536e; /* Blue background color */
     transform: scale(1.05); /* Slightly increase size on hover */
 }
 

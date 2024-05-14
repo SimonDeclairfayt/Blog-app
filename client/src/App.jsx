@@ -5,7 +5,11 @@ import Blogpage from "../Component/Blogpage";
 import Home from "../Component/Home";
 import "./App.css";
 import BlogPost from './components/BlogPost/BlogPost';
-import Settings from './components/Settings/Settings'; 
+import Dashboard from './components/Dashboard/Dashboard';
+import Profile from './components/Profile/Profile';
+import Register from './components/Register/Register';
+import Login from './components/Login/Login';
+
 
 const App = () => {
   return (
@@ -16,7 +20,13 @@ const App = () => {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/blogpost" element={<BlogPost />} />
-          <Route path="/settings" element={<Settings />} />
+          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/profile" element={<Profile />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/blogpage" element={<Blogpage />} />
+
+
         </Routes>
       </Router>
     </>

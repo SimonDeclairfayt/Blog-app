@@ -1,8 +1,11 @@
+import './Header.css';
+import searchIcon from '../public/icon-loupe-white.svg'; // Import the search icon
+
 function Header() {
   return (
     <div className="header">
       <div className="header-nav">
-        <h1>Title</h1>
+        <h1 className='titlecc'>Champion Chronicle</h1>
         <nav>
           <ul className="header-category">
             <li>Home</li>
@@ -12,9 +15,8 @@ function Header() {
         </nav>
       </div>
       <div className="header-right">
-        <form action="submit">
-          <input type="text" />
-          <img src="../public/icon-loupe-white.svg" alt="" />
+        <form action="submit" className="search-form">
+          <input type="text" className="search-input" placeholder="Search..." />
         </form>
         <button className="register">Register</button>
         <button className="login">Login</button>

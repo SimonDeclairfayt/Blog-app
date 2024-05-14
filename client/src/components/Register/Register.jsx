@@ -15,7 +15,9 @@ const Register = () => {
 
     return (
         <form>
+        
         <div className='main'>
+        <div className="background-image-container">
             <div className='whitecontainer'>
                 <h1>Register</h1>
                 <div className='gtsya'>Discover our best plans to post your daily blogs and became famous with us !</div>
@@ -42,6 +44,7 @@ const Register = () => {
                 <button className='submitbutton' type="submit">Register
                 <FontAwesomeIcon icon={faArrowRightToBracket} className="icon" /></button>
             </div>
+        </div>
         </div>
         </form> 
     );
