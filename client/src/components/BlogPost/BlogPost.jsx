@@ -3,6 +3,10 @@ import './BlogPost.css';
 import { Link } from 'react-router-dom'; // Import Link
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser, faNewspaper, faGear, faArrowRightFromBracket } from '@fortawesome/free-solid-svg-icons';
+import 'froala-editor/css/froala_style.min.css';
+import 'froala-editor/css/froala_editor.pkgd.min.css';
+import FroalaEditorComponent from 'react-froala-wysiwyg';
+import ReactDOM from 'react-dom/client';
 
 const BlogPost = () => {
     const [file, setFile] = useState();
@@ -37,19 +41,16 @@ const BlogPost = () => {
         alert('Image uploaded successfully!');
     };
 
-
     return (
         <div className='dashcontainer'>
             <div className='content-container'>
                 <div className='leftsidebar'>
                     <div className="sidebar-content">
                         <h1>Dashboard</h1>
-                        <div className="separator-container">
-                            <hr className="separator" />
-                        </div>
+                        
                         <Link to="/profile" className="sidebar-link"><FontAwesomeIcon icon={faUser} className="icon" />Profile</Link><br></br>
                         <Link to="/blogpost" className="sidebar-link"><FontAwesomeIcon icon={faNewspaper} className="icon" />Blog</Link><br></br>
-                        <Link to="/settings" className="sidebar-link"><FontAwesomeIcon icon={faGear} className="icon" />Settings</Link><br></br>
+
                     </div>
                     <div className="logout-container">
                         <Link to="/logout" className="logoutlink">Log out<FontAwesomeIcon icon={faArrowRightFromBracket} className="icon" /></Link>
@@ -66,22 +67,18 @@ const BlogPost = () => {
                     />
                     <h3 className='cyi'>Choose your image</h3>
                     <input type="file" onChange={handleChange} />
-                    <img src={file} />
                     {/* <button onClick={handleImageUpload}>Upload Image</button> */}
                     <h3 className='tt'>Write your description:</h3>
-                    <textarea
-                        type="text" 
-                        className="description-input" 
-                        placeholder="Enter description here..." 
-                        value={description} 
-                        onChange={handleDescriptionChange} 
-                    />
+                    <div id="editor">
+                        <FroalaEditorComponent tag='textarea'/>
+                    </div>
                     <div className='preview'>
                         <h3 className='prv'>Preview : </h3>
-                         {title && <h2>{title}</h2>} 
-                         {imageUrl && <img src={imageUrl} alt="Uploaded" className='uploadimage' />}
-                         {description &&<p>{description}</p>} 
+                         {title && <h2 className='prvtitle'>{title}</h2 >} 
+                         <img src={file} className="preview-image" />
+                         {description &&<p className='pdesc'>{description}</p>} 
                     </div>
+                    <button type='submit' className='syp'>Submit your post !</button>
                 </div>
             </div>
         </div>
