@@ -57,7 +57,6 @@ const BlogPost = () => {
                     />
                     <h3 className='cyi'>Choose your image</h3>
                     <input type="file" onChange={handleChange} />
-                    {/* <button onClick={handleImageUpload}>Upload Image</button> */}
                     <h3 className='tt'>Write your description:</h3>
                     <div id="editor">
                         <FroalaEditorComponent tag='textarea'/>

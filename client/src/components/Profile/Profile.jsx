@@ -30,7 +30,7 @@ const Profile = () => {
             <h2 className="profile-heading">Profile</h2>
             <div className="profile-info">
               <div className="profile-details">
-                <p><strong>Username:</strong> {profile.username}</p>
+                <p className='prousername'><strong>Username:</strong> {profile.username}</p>
                 <p><strong>Email:</strong> {profile.email}</p>
               </div>
               <div className="profile-picture">
