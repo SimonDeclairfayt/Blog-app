@@ -1,11 +1,13 @@
 from django.shortcuts import render
-from rest_framework.decorators import api_view
+from rest_framework.authentication import SessionAuthentication,TokenAuthentication
+from rest_framework.decorators import api_view,permission_classes,authentication_classes
 from rest_framework.response import Response
+from rest_framework.permissions import IsAuthenticated
 from django.shortcuts import get_object_or_404
-from .serializers import UserSerializer
+from .serializers import UserSerializer,BlogSerializer
 from rest_framework import status
 from rest_framework.authtoken.models import Token
-from .models import User
+from .models import User, Blogs
 
 # Create your views here.
 @api_view(['POST'])
@@ -29,3 +31,22 @@ def signUp(request):
         return Response({"token":token.key,"user": serializer.data})
     return Response(serializer.errors, status= status.HTTP_400_BAD_REQUEST);
 
+#Get all blogs
+@api_view(['GET'])
+def home(request):
+    blogs = Blogs.objects.all()
+    serializer = BlogSerializer(blogs,many=True)
+    return Response(serializer.data)
+
+
+#Post a blog
+@api_view(['POST'])
+@authentication_classes([TokenAuthentication])
+@permission_classes([IsAuthenticated])
+def postBlog(request):
+    serializer = BlogSerializer(data=request.data,context={'request':request})
+    if serializer.is_valid():
+        serializer.validated_data['user_id']=request.user.id
+        serializer.save()
+        return Response(serializer.data,status=201)
+    return Response(serializer.errors,status=400)

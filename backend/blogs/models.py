@@ -4,9 +4,6 @@ from django.contrib.postgres.fields import ArrayField
 
 DEFAULT_PROFILE_PIC="https://res.cloudinary.com/hzrmzkuce/image/upload/v1/media/profile-pics/default_b1yap4"
 
-# My Blogs table
-class Blogs(models.Model):
-    created_at = models.DateTimeField(auto_now_add=True)
 
 # Creating my User table
 # Starting with the create User function
@@ -40,12 +37,12 @@ class User(AbstractBaseUser):
         return self.username
     
 
-# Making the blog content model
-class BlogContent(models.Model):
-    blog = models.ForeignKey(Blogs, on_delete=models.CASCADE)
+# My Blogs table
+class Blogs(models.Model):
+    created_at = models.DateTimeField(auto_now_add=True)
     user = models.ForeignKey(User,on_delete=models.CASCADE)
     tags=ArrayField(models.CharField(max_length=25))
-    blog_title=models.CharField(max_length=100)
+    title=models.CharField(max_length=100,default="")
     content = models.TextField()
     picture_url=models.ImageField(upload_to="media/blog-pic/",blank=True)
     date_updated=models.DateTimeField(auto_now=True)
