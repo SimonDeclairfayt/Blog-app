@@ -1,5 +1,11 @@
+
 import { useState } from "react";
 import { Link } from "react-router-dom";
+
+import './Header.css';
+import searchIcon from '../public/icon-loupe-white.svg'; // Import the search icon
+
+
 function Header() {
   const [close, setClose] = useState(false);
 
@@ -9,6 +15,7 @@ function Header() {
     setIsHeaderVisible(!isHeaderVisible);
   };
   return (
+
     <div
       className="header"
       /*style={{ height: isHeaderVisible ? "100vh" : "10vh" }}*/
@@ -18,8 +25,8 @@ function Header() {
         /*style={{ height: isHeaderVisible ? "60vh" : "10vh" }}*/
       >
         <h1
-        /*id="title"
-          style={{
+        id="title"
+          /*style={{
             cursor: "pointer",
           }}
           onClick={handleClick}*/
@@ -27,6 +34,7 @@ function Header() {
           Sport-Blog
         </h1>
         <nav /*style={{ display: isHeaderVisible ? "block" : "none" }}*/>
+
           <ul className="header-category">
             <Link to={"/"}>
               <li>Home</li>
@@ -40,6 +48,7 @@ function Header() {
           </ul>
         </nav>
       </div>
+
       <div
         className="header-right"
         /*style={{ display: isHeaderVisible ? "block" : "none" }}*/
@@ -47,6 +56,7 @@ function Header() {
         <form action="submit">
           <input type="text" />
           <img src="../public/icon-loupe-white.svg" alt="" />
+
         </form>
         <Link to={"/register"} className="button">
           {" "}

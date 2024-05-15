@@ -27,6 +27,7 @@ const Register = () => {
     }
   };
 
+
   return (
     <form onSubmit={handleSubmit}>
       <div className="main">
@@ -73,5 +74,6 @@ const Register = () => {
     </form>
   );
 };
+
 
 export default Register;

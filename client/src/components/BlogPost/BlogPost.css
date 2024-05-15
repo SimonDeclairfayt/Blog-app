@@ -15,7 +15,7 @@
 }
 
 .leftsidebar {
-    background-color: #393E46;
+    background-color: #103268;
     /* height: 100vh; */
     width: 250px;
     display: flex;
@@ -23,6 +23,10 @@
     justify-content: space-between;
     min-height: 100vh; /* Adjust height as needed */
 
+}
+
+.textarea {
+    width: 500px;
 }
 
 .rightsidecontainer {
@@ -36,33 +40,48 @@
 
 .tt {
     padding-top: 45px;
-    padding-bottom: 4px;
+    padding-bottom: 10px;
 }
 
 .preview {
     padding-top: 45px;
     padding-bottom: 10px; /* Remove bottom padding */
+    /* width: 500; */
 }
 
-.uploadimage {
+/* .uploadimage {
     width: 400px;
     display: flex;
     align-items: center;
     padding-top: 10px;
     padding-bottom: 10px;
-}
+} */
 
 /* .description {
     padding-top: 500px;
 } */
 
 .prv {
-    padding-bottom: 10px;
+    padding-bottom: 35px;
+}
+
+.pdesc {
+    margin-top: 25px;
+    font-size: 20px;
+    margin-bottom: 25px;
+}
+
+.prvtitle {
+    padding-bottom: 25px;
+    font-weight: 600;
+    font-size: 48px;
 }
 
 .title-textarea {
     padding-left: 2px;
     border-radius: 5px;
+    width: 180px;
+    height: 30px;
 }
 .description-input {
     padding-left: 2px;
@@ -112,20 +131,28 @@ h1 {
     color: #aeaeae; /* Change color on hover */
 }
 
-.separator-container {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 20px;
-    border-radius: 2px;
-}
-
-.separator {
-    width: 80%;
-    border: none;
-    border-top: 1px solid #eeeeee;
-    border-radius: 20px;
-}
-
 .icon {
     padding-right: 8px;
+}
+
+.preview-image{
+    width: 1000px;
+}
+
+.syp {
+    background-color: #393E46; /* Background color */
+    color: white; /* Text color */
+    padding: 10px 20px; /* Padding */
+    border: none; /* Remove border */
+    border-radius: 5px; /* Rounded corners */
+    font-size: 18px; /* Font size */
+    font-weight: bold; /* Font weight */
+    cursor: pointer; /* Cursor style */
+    transition: background-color 0.3s ease; /* Smooth transition for background color */
+}
+
+.syp:hover {
+    background-color: rgb(72, 80, 95); /* Change background color on hover */
+    transform: scale(1.03);
+    border: 1px solid white;
 }

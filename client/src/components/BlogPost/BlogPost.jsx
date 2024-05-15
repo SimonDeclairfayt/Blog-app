@@ -1,3 +1,4 @@
+
 import React, { useState } from "react";
 import "./BlogPost.css";
 import { Link } from "react-router-dom"; // Import Link
@@ -8,6 +9,14 @@ import {
   faGear,
   faArrowRightFromBracket,
 } from "@fortawesome/free-solid-svg-icons";
+
+
+import { faUser, faNewspaper, faGear, faArrowRightFromBracket } from '@fortawesome/free-solid-svg-icons';
+import 'froala-editor/css/froala_style.min.css';
+import 'froala-editor/css/froala_editor.pkgd.min.css';
+import FroalaEditorComponent from 'react-froala-wysiwyg';
+import ReactDOM from 'react-dom/client';
+
 
 const BlogPost = () => {
   const [file, setFile] = useState();
@@ -42,6 +51,7 @@ const BlogPost = () => {
     alert("Image uploaded successfully!");
   };
 
+
   return (
     <div className="dashcontainer">
       <div className="content-container">
@@ -50,6 +60,7 @@ const BlogPost = () => {
             <h1>Dashboard</h1>
             <div className="separator-container">
               <hr className="separator" />
+
             </div>
             <Link to="/profile" className="sidebar-link">
               <FontAwesomeIcon icon={faUser} className="icon" />
