@@ -15,12 +15,31 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     // Your validation and login logic here
+    const loginData = {
+      email: email,
+      password: password,
+    };
+    console.log(loginData);
     try {
       const response = await axios.post(
         "https://sport-blog-app-f99d3e95c99d.herokuapp.com/login",
         { email, password }
       );
       console.log(response.data); // Handle success response
+      console.log(response.data);
+
+      const { token, user } = response.data;
+
+      localStorage.setItem("token", token);
+      localStorage.setItem("id", user.id);
+      localStorage.setItem("email", user.email);
+
+      if (user.id && token) {
+        console.log(user.id, token);
+        window.location.href = "/";
+      } else {
+        alert("Invalid email or password");
+      }
     } catch (error) {
       console.error("Registration failed:", error);
       // Handle error
