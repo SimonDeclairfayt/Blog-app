@@ -1,25 +1,71 @@
+
+import { useState } from "react";
+import { Link } from "react-router-dom";
+
 import './Header.css';
 import searchIcon from '../public/icon-loupe-white.svg'; // Import the search icon
 
+
 function Header() {
+  const [close, setClose] = useState(false);
+
+  const [isHeaderVisible, setIsHeaderVisible] = useState(true);
+
+  const handleClick = () => {
+    setIsHeaderVisible(!isHeaderVisible);
+  };
   return (
-    <div className="header">
-      <div className="header-nav">
-        <h1 className='titlecc'>Champion Chronicle</h1>
-        <nav>
+
+    <div
+      className="header"
+      /*style={{ height: isHeaderVisible ? "100vh" : "10vh" }}*/
+    >
+      <div
+        className="header-nav"
+        /*style={{ height: isHeaderVisible ? "60vh" : "10vh" }}*/
+      >
+        <h1
+        id="title"
+          /*style={{
+            cursor: "pointer",
+          }}
+          onClick={handleClick}*/
+        >
+          Sport-Blog
+        </h1>
+        <nav /*style={{ display: isHeaderVisible ? "block" : "none" }}*/>
+
           <ul className="header-category">
-            <li>Home</li>
-            <li>Tags</li>
-            <li>Profil</li>
+            <Link to={"/"}>
+              <li>Home</li>
+            </Link>
+            <Link to={"/blogpost"}>
+              <li>Blog Post</li>
+            </Link>
+            <Link to={"/"}>
+              <li>Home</li>
+            </Link>
           </ul>
         </nav>
       </div>
-      <div className="header-right">
-        <form action="submit" className="search-form">
-          <input type="text" className="search-input" placeholder="Search..." />
+
+      <div
+        className="header-right"
+        /*style={{ display: isHeaderVisible ? "block" : "none" }}*/
+      >
+        <form action="submit">
+          <input type="text" />
+          <img src="../public/icon-loupe-white.svg" alt="" />
+
         </form>
-        <button className="register">Register</button>
-        <button className="login">Login</button>
+        <Link to={"/register"} className="button">
+          {" "}
+          Register
+        </Link>
+        <Link to={"/login"} className="button">
+          {" "}
+          Login
+        </Link>
       </div>
     </div>
   );
