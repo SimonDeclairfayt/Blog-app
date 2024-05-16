@@ -14,9 +14,9 @@ class CommaSeparatedCharField(serializers.CharField):
         return super().to_internal_value(value)
     
 class BlogSerializer(serializers.ModelSerializer):
-    tags = CommaSeparatedCharField(write_only=True)
+    tags = CommaSeparatedCharField()
     user = serializers.PrimaryKeyRelatedField(read_only=True)  # Show user details
 
     class Meta: 
         model = Blogs
-        fields=['user','tags','title','content','picture_url']
+        fields=['id','user','tags','title','content','picture_url']
