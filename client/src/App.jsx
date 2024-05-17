@@ -9,20 +9,23 @@ import "./App.css";
 import Dashboard from './components/Dashboard/Dashboard';
 import Profile from './components/Profile/Profile';
 
-
 const App = () => {
   return (
     <>
       <Router>
         <Header />
         <Routes>
+          <Route path="/home" element={<Home />} />
           <Route path="/" element={<Home />} />
-          <Route path="/blog" element={<Blogpage />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Register />} />
           <Route path="/blogpost" element={<BlogPost />} />
           <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/categorys" element={<Categorys />} />
           <Route path="/profile" element={<Profile />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/blogpage" element={<Blogpage />} />
+          <Route path="/latest" element={<Latest />} />
+
         </Routes>
       </Router>
     </>

@@ -3,6 +3,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 
 import './Header.css';
+import { Link } from 'react-router-dom'; // Import Link from react-router-dom
 import searchIcon from '../public/icon-loupe-white.svg'; // Import the search icon
 
 
@@ -36,15 +37,16 @@ function Header() {
         <nav /*style={{ display: isHeaderVisible ? "block" : "none" }}*/>
 
           <ul className="header-category">
-            <Link to={"/"}>
-              <li>Home</li>
-            </Link>
-            <Link to={"/blogpost"}>
-              <li>Blog Post</li>
-            </Link>
-            <Link to={"/"}>
-              <li>Home</li>
-            </Link>
+            <li>
+              <Link to="/home">Home</Link>
+            </li>
+            <li>
+              <Link to="/BlogPage">Tags</Link>
+            </li>
+            <li>
+              <Link to="/profile">Profil</Link>
+            </li>
+
           </ul>
         </nav>
       </div>
@@ -58,13 +60,11 @@ function Header() {
           <img src="../public/icon-loupe-white.svg" alt="" />
 
         </form>
-        <Link to={"/register"} className="button">
-          {" "}
-          Register
+        <Link to="/register">
+          <button className="register">Register</button>
         </Link>
-        <Link to={"/login"} className="button">
-          {" "}
-          Login
+        <Link to="/login">
+          <button className="login">Login</button>
         </Link>
       </div>
     </div>

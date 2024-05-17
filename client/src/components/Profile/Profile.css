@@ -11,15 +11,20 @@
   .profile-details {
     padding-top: 10px;
     font-size: 20px;
-    padding-bottom: 10px; 
+    padding-bottom: 25px; 
   }
 
   .profile.username {
-    padding-left: 50px;
+    padding-left: 500px;
+    
   }
-  
+
+  .prousername {
+    padding-bottom: 5px; 
+  }
   
   .profile-heading {
     font-weight: 600;
     font-size: 36px;
   }
+

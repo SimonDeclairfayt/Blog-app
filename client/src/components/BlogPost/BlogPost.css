@@ -149,6 +149,7 @@ h1 {
     font-weight: bold; /* Font weight */
     cursor: pointer; /* Cursor style */
     transition: background-color 0.3s ease; /* Smooth transition for background color */
+    margin-top: 50px;
 }
 
 .syp:hover {
