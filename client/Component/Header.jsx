@@ -1,12 +1,29 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 function Header() {
   const [close, setClose] = useState(false);
+  const handleClick = () => {
+    setIsHeaderVisible(!isHeaderVisible);
+  };
 
   const [isHeaderVisible, setIsHeaderVisible] = useState(true);
 
-  const handleClick = () => {
-    setIsHeaderVisible(!isHeaderVisible);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (token) {
+      setIsLoggedIn(true);
+    }
+  }, []);
+
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    localStorage.removeItem("id");
+    localStorage.removeItem("email");
+    localStorage.removeItem("username");
+    setIsLoggedIn(false);
+    window.location.href = "/"; // Redirect to home or login page
   };
   return (
     <div
@@ -48,14 +65,20 @@ function Header() {
           <input type="text" />
           <img src="../public/icon-loupe-white.svg" alt="" />
         </form>
-        <Link to={"/register"} className="button">
-          {" "}
-          Register
-        </Link>
-        <Link to={"/login"} className="button">
-          {" "}
-          Login
-        </Link>
+        {!isLoggedIn ? (
+          <>
+            <Link to={"/register"} className="button">
+              Register
+            </Link>
+            <Link to={"/login"} className="button">
+              Login
+            </Link>
+          </>
+        ) : (
+          <button onClick={handleLogout} className="button">
+            Logout
+          </button>
+        )}
       </div>
     </div>
   );
