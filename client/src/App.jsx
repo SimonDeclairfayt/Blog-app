@@ -8,6 +8,7 @@ import Register from "./components/Register/Register";
 import BlogPost from "./components/BlogPost/BlogPost";
 import "./App.css";
 import Dashboard from "./components/Dashboard/Dashboard";
+import Profile from "./components/Profile/Profile";
 
 const App = () => {
   return (
@@ -16,11 +17,12 @@ const App = () => {
         <Header />
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/blog" element={<Blogpage />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Register />} />
           <Route path="/blogpost" element={<BlogPost />} />
-          <Route path="/profil" element={<Dashboard />} />
+          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/profile" element={<Profile />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/blogpage" element={<Blogpage />} />
         </Routes>
       </Router>
     </>

@@ -4,14 +4,29 @@
     box-sizing: border-box;
 }
 
+/* .background-image-container {
+  padding-top: 50px;
+  background-image: linear-gradient(rgba(34, 36, 37, 0.589), rgba(26, 25, 25, 0.846)), url('/src/assets/CHAMPION CHRONICLE.png');
+  background-size: cover;
+  background-position: center;
+  width: 100%;
+  height: 100vh; 
+  display: flex;
+  align-items: center; 
+  justify-content: center; 
+  position: relative; 
+} */
+
+  
+  
+
 .main {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     font-weight: 400;
-    background-color: rgb(217, 228, 221);
-    height: 100vh;
+    color: white;;
 }
 
 .gtsya {
@@ -29,13 +44,13 @@ h1 {
     display: flex;
     flex-direction: column;
     align-items: center;
-    /* justify-content: center; */
-    background-color: rgb(251, 247, 240);
+    background-color: #393E46;
     width: 370px;
-    height: 475px;
     padding: 20px;
     border-radius: 55px;
-}
+    position: relative; /* Add position relative */
+    z-index: 1; /* Add z-index to ensure it's above the background image */
+  }
 
 .infos {
     padding-bottom: 2px;
@@ -56,7 +71,7 @@ input[type="password"] {
   border-radius: 5px;
   font-size: 16px;
   width: 250px;
-  background-color: #D9E4DD;
+  background-color: #393E46;
 }
 
 input[type="email"]:focus,
@@ -66,8 +81,8 @@ input[type="password"]:focus {
 }
 
 .submitbutton {
-    background-color: #D9E4DD; /* Blue background color */
-    color: black; /* Black text color */
+    background-color: #293140; /* Blue background color */
+    color: rgb(255, 255, 255); /* Black text color */
     padding: 14px 26px; /* Padding around the text */
     border: none; /* Remove border */
     border-radius: 5px; /* Rounded corners */
@@ -80,10 +95,11 @@ input[type="password"]:focus {
 }
 
 .submitbutton:hover {
-    background-color: #aab6af; /* Darker blue on hover */
+    background-color: #45536e; /* Blue background color */
     transform: scale(1.05); /* Slightly increase size on hover */
 }
 
 .icon {
     padding-left: 10px;
 }
+

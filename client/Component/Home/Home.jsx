@@ -3,6 +3,7 @@ import Categorys from "./Categorys";
 import Latest from "../Latest";
 import { useState, useEffect } from "react";
 import axios from "axios";
+
 function Home() {
   const [data, setData] = useState(null);
 

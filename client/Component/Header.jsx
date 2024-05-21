@@ -1,5 +1,10 @@
 import { useState, useEffect } from "react";
+
 import { Link } from "react-router-dom";
+
+import "./Header.css";
+import searchIcon from "../public/icon-loupe-white.svg"; // Import the search icon
+
 function Header() {
   const [close, setClose] = useState(false);
   const handleClick = () => {
@@ -35,8 +40,8 @@ function Header() {
         /*style={{ height: isHeaderVisible ? "60vh" : "10vh" }}*/
       >
         <h1
-        /*id="title"
-          style={{
+          id="title"
+          /*style={{
             cursor: "pointer",
           }}
           onClick={handleClick}*/
@@ -45,18 +50,19 @@ function Header() {
         </h1>
         <nav /*style={{ display: isHeaderVisible ? "block" : "none" }}*/>
           <ul className="header-category">
-            <Link to={"/"}>
-              <li>Home</li>
-            </Link>
-            <Link to={"/blogpost"}>
-              <li>Blog Post</li>
-            </Link>
-            <Link to={"/"}>
-              <li>Home</li>
-            </Link>
+            <li>
+              <Link to="/">Home</Link>
+            </li>
+            <li>
+              <Link to="/BlogPage">Tags</Link>
+            </li>
+            <li>
+              <Link to="/profile">Profil</Link>
+            </li>
           </ul>
         </nav>
       </div>
+
       <div
         className="header-right"
         /*style={{ display: isHeaderVisible ? "block" : "none" }}*/
