@@ -1,0 +1,3 @@
+GET http://127.0.0.1:8000/token-test
+Content-Type: application/json
+Authorization: Token 2cd73fc250f0707ca128f1a0183dc3c88d516a29
