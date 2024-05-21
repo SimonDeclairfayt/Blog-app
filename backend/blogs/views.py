@@ -4,10 +4,10 @@ from rest_framework.decorators import api_view,permission_classes,authentication
 from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated
 from django.shortcuts import get_object_or_404
-from .serializers import UserSerializer,BlogSerializer
+from .serializers import UserSerializer,BlogSerializer, CommentSerializer
 from rest_framework import status
 from rest_framework.authtoken.models import Token
-from .models import User, Blogs
+from .models import User, Blogs, Comments
 
 # LOGIN VIEW
 @api_view(['POST'])
@@ -41,6 +41,19 @@ def getUserInfo(request):
     serializer= UserSerializer(user)
     return Response(serializer.data)
 
+#MODIFY USERS INFO
+@api_view(['PATCH'])
+@authentication_classes([TokenAuthentication])
+@permission_classes([IsAuthenticated])
+def patchUserInfo(request):
+    user=get_object_or_404(User, id=request.user.id)
+    serializer=UserSerializer(user, data=request.data, partial=True)
+    if serializer.is_valid():
+        serializer.save()
+        return Response({"message":"Updated successfully","content":serializer.data})
+    return Response({"message":"You don't have the right to delete that"})
+
+
 #Get all blogs
 @api_view(['GET'])
 def home(request):
@@ -53,7 +66,10 @@ def home(request):
 def singleBlog(request,pk):
     blogs=get_object_or_404(Blogs, id=pk)
     serializer=BlogSerializer(blogs)
-    return Response(serializer.data)
+    comments = Comments.objects.filter(blog=pk)
+    commentSerializer = CommentSerializer(comments, many=True)
+    
+    return Response([serializer.data,commentSerializer.data])
 
 # update a blog
 @api_view(['PATCH'])
@@ -91,3 +107,17 @@ def postBlog(request):
         serializer.save()
         return Response(serializer.data,status=201)
     return Response(serializer.errors,status=400)
+
+#POST A COMMENT
+@api_view(['POST'])
+@authentication_classes([TokenAuthentication])
+@permission_classes([IsAuthenticated])
+def postComment(request,pk):
+    serializer = CommentSerializer(data=request.data)
+    if serializer.is_valid():
+        serializer.validated_data['user_id']=request.user.id
+        serializer.validated_data['blog_id']=pk
+        serializer.save()
+        return Response(serializer.data,status=201)
+    return Response(serializer.errors,status=400)
+    

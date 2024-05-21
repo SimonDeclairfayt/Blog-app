@@ -1,6 +1,6 @@
 from rest_framework import serializers
 from rest_framework.validators import UniqueTogetherValidator
-from .models import User,Blogs
+from .models import User,Blogs, Comments
 
 class UserSerializer(serializers.ModelSerializer):
     class Meta(object):
@@ -20,3 +20,11 @@ class BlogSerializer(serializers.ModelSerializer):
     class Meta: 
         model = Blogs
         fields=['id','user','tags','title','content','picture_url']
+
+class CommentSerializer(serializers.ModelSerializer):
+    user = serializers.PrimaryKeyRelatedField(read_only=True)
+    blog = serializers.PrimaryKeyRelatedField(read_only=True)
+
+    class Meta:
+        model = Comments
+        fields= ['user','blog','message','date_created']
