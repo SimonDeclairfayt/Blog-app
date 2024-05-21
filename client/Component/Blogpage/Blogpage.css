@@ -42,8 +42,9 @@
   .bloc-info-head {
     margin-bottom: 12.5px;
     img {
-      width: 30%;
-      height: 100%;
+      border-radius: 50%;
+      width: 25%;
+      height: 90%;
     }
   }
   .bloc-info-foot ul {

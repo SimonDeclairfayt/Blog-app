@@ -26,7 +26,7 @@ function Home() {
       <Categorys name="Basket" data={data} />
       <Categorys name="Football" reverse={true} data={data} />
       <Categorys name="Tennis" data={data} />
-      <Latest data={data} />
+      <Latest />
     </div>
   );
 }
