@@ -5,15 +5,14 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 
 function Home() {
-  const [data, setData] = useState(null);
+  const [data, setData] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(
-          "https://sport-blog-app-f99d3e95c99d.herokuapp.com/"
-        );
+        const response = await axios.get("/api/");
         console.log(response.data); // Handle success response
+        setData(response.data);
       } catch (error) {
         console.error("Fetching data failed:", error);
         // Handle error
@@ -27,7 +26,7 @@ function Home() {
       <Categorys name="Basket" data={data} />
       <Categorys name="Football" reverse={true} data={data} />
       <Categorys name="Tennis" data={data} />
-      <Latest />
+      <Latest data={data} />
     </div>
   );
 }

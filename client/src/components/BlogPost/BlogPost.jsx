@@ -8,38 +8,64 @@ import {
   faGear,
   faArrowRightFromBracket,
 } from "@fortawesome/free-solid-svg-icons";
+import axios from "axios";
+import "froala-editor/css/froala_style.min.css";
+import "froala-editor/css/froala_editor.pkgd.min.css";
+import FroalaEditorComponent from "react-froala-wysiwyg";
 
 const BlogPost = () => {
-  const [file, setFile] = useState();
+  const [file, setFile] = useState(null);
   const [title, setTitle] = useState("");
+  const [tags, setTags] = useState("");
   const [description, setDescription] = useState("");
-  const [imageUrl, setImageUrl] = useState("");
 
-  function handleChange(e) {
-    console.log(e.target.files);
-    setFile(URL.createObjectURL(e.target.files[0]));
-  }
+  const handleFileChange = (e) => {
+    setFile(e.target.files[0]);
+  };
 
   const handleTitleChange = (e) => {
     setTitle(e.target.value);
   };
 
-  const handleDescriptionChange = (e) => {
-    setDescription(e.target.value);
+  const handleTagsChange = (e) => {
+    setTags(e.target.value);
   };
 
-  const handleImageUrlChange = (e) => {
-    setImageUrl(e.target.value);
+  const handleDescriptionChange = (model) => {
+    setDescription(model);
   };
 
-  const handleImageUpload = () => {
-    // Fetch the image from the provided URL and handle the upload process
-    // Here you can implement the logic to fetch the image and store it in your app
-    // For simplicity, let's just set the image URL for now
-    // You can replace this with your actual image upload logic
-    // For example:
-    // setImageUrl('URL_OF_THE_UPLOADED_IMAGE');
-    alert("Image uploaded successfully!");
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (!title || !tags || !description || !file) {
+      alert("All fields are required!");
+      return;
+    }
+
+    const formData = new FormData();
+    formData.append("title", title);
+    formData.append("tags", tags);
+    formData.append("content", description);
+    formData.append("picture_url", file);
+    for (let [key, value] of formData.entries()) {
+      console.log(`${key}: ${value}`);
+    }
+    const token = localStorage.getItem("token");
+    try {
+      const response = await axios.post("/api/blog", formData, {
+        headers: {
+          Authorization: `token ${token}`, // Add the token to the request headers
+        },
+      });
+      console.log("Blog post created successfully:", response.data);
+      // Reset form fields
+      setTitle("");
+      setTags("");
+      setDescription("");
+      setFile(null);
+    } catch (error) {
+      console.error("There was an error creating the blog post!", error);
+    }
   };
 
   return (
@@ -86,25 +112,25 @@ const BlogPost = () => {
             value={title}
             onChange={handleTitleChange}
           />
-          <h3 className="cyi">Choose your image</h3>
-          <input type="file" onChange={handleChange} />
-          <img src={file} />
-          {/* <button onClick={handleImageUpload}>Upload Image</button> */}
-          <h3 className="tt">Write your description:</h3>
-          <textarea
-            type="text"
-            className="description-input"
-            placeholder="Enter description here..."
-            value={description}
-            onChange={handleDescriptionChange}
+          <h3 className="cyi">Tags (comma separated):</h3>
+          <input
+            className="tags-input"
+            placeholder="Enter tags here..."
+            value={tags}
+            onChange={handleTagsChange}
           />
-          <div className="preview">
-            <h3 className="prv">Preview : </h3>
-            {title && <h2>{title}</h2>}
-            {imageUrl && (
-              <img src={imageUrl} alt="Uploaded" className="uploadimage" />
-            )}
-            {description && <p>{description}</p>}
+          <h3 className="cyi">Choose your image</h3>
+          <input type="file" onChange={handleFileChange} />
+          <h3 className="tt">Write your description:</h3>
+          <div id="editor">
+            <FroalaEditorComponent
+              tag="textarea"
+              model={description}
+              onModelChange={handleDescriptionChange}
+            />
+            <button type="submit" onClick={handleSubmit} className="syp">
+              Submit your post!
+            </button>
           </div>
         </div>
       </div>
