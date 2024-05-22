@@ -2,7 +2,7 @@ import "./Blogpage.css";
 import Latest from "../Latest";
 import Header from "../Header";
 import axios from "axios";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import Blogpagehead from "./Blogpagehead";
 import Blogpagecontent from "./Blogpagecontent";
 import { useParams } from "react-router-dom";
@@ -29,12 +29,19 @@ function Blogpage() {
     fetchData();
   }, []);
 
+  // Memoize the data transformation (if any)
+  const memoizedData = useMemo(() => {
+    // Perform any data transformations here if needed
+    // For example: return data.items || some default value
+    return data;
+  }, [data]);
+
   return (
     <>
       <div className="blogpage-bloc">
-        <Blogpagehead data={data} />
+        <Blogpagehead data={memoizedData} />
         <Blogpagecontent
-          data={data}
+          data={memoizedData}
           handleClickLike={handleClickLike}
           liked={liked}
         />

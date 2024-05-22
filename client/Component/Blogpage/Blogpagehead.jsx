@@ -16,6 +16,11 @@ function Blogpagehead({ data }) {
     return array;
   };
 
+  const l = async () => {
+    await data;
+  };
+  l();
+
   useEffect(() => {
     const fetchData = async () => {
       const token = localStorage.getItem("token");
