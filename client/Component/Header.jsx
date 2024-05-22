@@ -1,22 +1,36 @@
+import { useState, useEffect } from "react";
 
-import { useState } from "react";
 import { Link } from "react-router-dom";
 
-import './Header.css';
-import { Link } from 'react-router-dom'; // Import Link from react-router-dom
-import searchIcon from '../public/icon-loupe-white.svg'; // Import the search icon
-
+import "./Header.css";
+import searchIcon from "../public/icon-loupe-white.svg"; // Import the search icon
 
 function Header() {
   const [close, setClose] = useState(false);
-
-  const [isHeaderVisible, setIsHeaderVisible] = useState(true);
-
   const handleClick = () => {
     setIsHeaderVisible(!isHeaderVisible);
   };
-  return (
 
+  const [isHeaderVisible, setIsHeaderVisible] = useState(true);
+
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (token) {
+      setIsLoggedIn(true);
+    }
+  }, []);
+
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    localStorage.removeItem("id");
+    localStorage.removeItem("email");
+    localStorage.removeItem("username");
+    setIsLoggedIn(false);
+    window.location.href = "/"; // Redirect to home or login page
+  };
+  return (
     <div
       className="header"
       /*style={{ height: isHeaderVisible ? "100vh" : "10vh" }}*/
@@ -26,7 +40,7 @@ function Header() {
         /*style={{ height: isHeaderVisible ? "60vh" : "10vh" }}*/
       >
         <h1
-        id="title"
+          id="title"
           /*style={{
             cursor: "pointer",
           }}
@@ -35,10 +49,9 @@ function Header() {
           Sport-Blog
         </h1>
         <nav /*style={{ display: isHeaderVisible ? "block" : "none" }}*/>
-
           <ul className="header-category">
             <li>
-              <Link to="/home">Home</Link>
+              <Link to="/">Home</Link>
             </li>
             <li>
               <Link to="/BlogPage">Tags</Link>
@@ -46,7 +59,6 @@ function Header() {
             <li>
               <Link to="/profile">Profil</Link>
             </li>
-
           </ul>
         </nav>
       </div>
@@ -58,14 +70,21 @@ function Header() {
         <form action="submit">
           <input type="text" />
           <img src="../public/icon-loupe-white.svg" alt="" />
-
         </form>
-        <Link to="/register">
-          <button className="register">Register</button>
-        </Link>
-        <Link to="/login">
-          <button className="login">Login</button>
-        </Link>
+        {!isLoggedIn ? (
+          <>
+            <Link to={"/register"} className="button">
+              Register
+            </Link>
+            <Link to={"/login"} className="button">
+              Login
+            </Link>
+          </>
+        ) : (
+          <button onClick={handleLogout} className="button">
+            Logout
+          </button>
+        )}
       </div>
     </div>
   );
