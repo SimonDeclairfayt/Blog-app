@@ -12,7 +12,7 @@ const BlogPost = () => {
   const [file, setFile] = useState(null);
   const [title, setTitle] = useState('');
   const [tags, setTags] = useState('');
-  const [description, setDescription] = useState('');
+  const [content, setContent] = useState('');
 
   const handleFileChange = (e) => {
     setFile(e.target.files[0]);
@@ -26,22 +26,22 @@ const BlogPost = () => {
     setTags(e.target.value);
   };
 
-  const handleDescriptionChange = (model) => {
-    setDescription(model);
+  const handleContentChange = (model) => {
+    setContent(model);
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!title || !tags || !description || !file) {
+    if (!title || !tags || !content || !file) {
       alert('All fields are required!');
       return;
     }
 
     const formData = new FormData();
     formData.append('title', title);
-    formData.append('tags', JSON.stringify(tags.split(',').map(tag => tag.trim())));
-    formData.append('description', description);
-    formData.append('file', file);
+    formData.append('tags', tags);
+    formData.append('content', content);
+    formData.append('picture-url', file);
 
     try {
       const response = await axios.post('https://sport-blog-app-f99d3e95c99d.herokuapp.com/blog', formData, {
@@ -49,14 +49,23 @@ const BlogPost = () => {
           'Content-Type': 'multipart/form-data',
         },
       });
-      console.log('Blog post created successfully:', response.data);
-      // Reset form fields
-      setTitle('');
-      setTags('');
-      setDescription('');
-      setFile(null);
+
+      // Check if the request was successful (status code 200 or 201)
+      if (response.status === 200 || response.status === 201) {
+        console.log('Blog post created successfully:', response.data);
+        alert('Blog post created successfully!');
+        // Reset form fields
+        setTitle('');
+        setTags('');
+        setContent('');
+        setFile(null);
+      } else {
+        console.error('Failed to create blog post. Status:', response.status);
+        alert('Failed to create blog post. Please try again.');
+      }
     } catch (error) {
       console.error('There was an error creating the blog post!', error);
+      alert('Failed to create blog post. Please try again.');
     }
   };
 
@@ -102,8 +111,8 @@ const BlogPost = () => {
             <div id="editor">
               <FroalaEditorComponent
                 tag='textarea'
-                model={description}
-                onModelChange={handleDescriptionChange}
+                model={content}
+                onModelChange={handleContentChange}
               />
             </div>
             <button type='submit' className='syp'>Submit your post!</button>
