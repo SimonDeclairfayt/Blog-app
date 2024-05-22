@@ -31,12 +31,13 @@ const BlogPost = () => {
     setTags(e.target.value);
   };
 
-  const handleDescriptionChange = (model) => {
-    setDescription(model);
+  const handleContentChange = (model) => {
+    setContent(model);
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
     if (!title || !tags || !description || !file) {
       alert("All fields are required!");
       return;
@@ -57,6 +58,7 @@ const BlogPost = () => {
           Authorization: `token ${token}`, // Add the token to the request headers
         },
       });
+
       console.log("Blog post created successfully:", response.data);
       // Reset form fields
       setTitle("");

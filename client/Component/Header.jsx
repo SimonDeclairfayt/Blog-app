@@ -1,9 +1,7 @@
-import { useState, useEffect } from "react";
-
+import { useState } from "react";
 import { Link } from "react-router-dom";
-
-import "./Header.css";
-import searchIcon from "../public/icon-loupe-white.svg"; // Import the search icon
+import './Header.css';
+import searchIcon from '../public/icon-loupe-white.svg'; // Import the search icon
 
 function Header() {
   const [close, setClose] = useState(false);
