@@ -1,9 +1,12 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 function Blogpagehead({ data }) {
-  const [name, setName] = useState(null);
+  const [profil, setProfil] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   const convertStringToArray = (str) => {
+    console.log("-----------datas from bloghead: " + data);
     // Step 1: Replace single quotes with double quotes
     let jsonString = str.replace(/'/g, '"');
 
@@ -16,11 +19,6 @@ function Blogpagehead({ data }) {
     return array;
   };
 
-  const l = async () => {
-    await data;
-  };
-  l();
-
   useEffect(() => {
     const fetchData = async () => {
       const token = localStorage.getItem("token");
@@ -30,29 +28,51 @@ function Blogpagehead({ data }) {
             Authorization: `token ${token}`, // Add the token to the request headers
           },
         });
-        setName({
+        console.log("--------------------");
+        console.log(response.data);
+        console.log("--------------------");
+        console.log("/////////////////////");
+        console.log(data);
+        console.log("/////////////////////");
+
+        setProfil({
           name: response.data.username,
           email: response.data.email,
           profilePicture: response.data.picture_url,
         });
       } catch (error) {
         console.error("Fetching data failed:", error);
+        setError("Fetching profile data failed");
+      } finally {
+        setLoading(false);
       }
     };
     fetchData();
   }, []);
 
+  if (loading) {
+    return <div>Loading...</div>; // Show loading state while fetching data
+  }
+
+  if (error) {
+    return <div>{error}</div>; // Show error message if fetching fails
+  }
+
+  if (!data) {
+    return <div>No blog data available</div>; // Handle case where blog data is null
+  }
+
   return (
     <div className="bloc-head">
-      <h2>{data[0].title}</h2>
+      <h2>{data.title}</h2>
       <div className="bloc-img">
-        <img src={data[0].picture_url} alt="" />
+        <img src={data.picture_url} alt="" />
       </div>
       <div className="bloc-info">
         <div className="bloc-info-head">
           <div className="bloc-info-author">
-            <img src={name.profilePicture} alt="" />
-            <h4>{name.name}</h4>
+            {profil && <img src={profil.profilePicture} alt="Author" />}
+            {profil && <h4>{profil.name}</h4>}
           </div>
           <div className="bloc-info-author">
             <h4>06 may 2024</h4>
@@ -60,9 +80,9 @@ function Blogpagehead({ data }) {
         </div>
         <div className="bloc-info-foot">
           <ul>
-            {convertStringToArray(data[0].tags).map((el) => {
+            {convertStringToArray(data.tags).map((el, id) => {
               return (
-                <li>
+                <li key={id}>
                   <div className="bloc-info-author">
                     <h4>{el}</h4>
                   </div>

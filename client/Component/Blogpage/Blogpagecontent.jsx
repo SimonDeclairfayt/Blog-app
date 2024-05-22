@@ -5,7 +5,7 @@ function Blogpagecontent({ handleClickLike, liked, data }) {
   return (
     <>
       <div className="bloc-content">
-        <p>{data[0].content.replace(/<[^>]*>/g, "")}</p>
+        <p>{data.content.replace(/<[^>]*>/g, "")}</p>
 
         <div className="bloc-content-like">
           <div className="bloc-content-like-img">
