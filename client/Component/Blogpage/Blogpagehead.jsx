@@ -1,21 +1,78 @@
-function Blogpagehead() {
+import { useState, useEffect } from "react";
+import axios from "axios";
+function Blogpagehead({ data }) {
+  const [profil, setProfil] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  const convertStringToArray = (str) => {
+    console.log("-----------datas from bloghead: " + data);
+    // Step 1: Replace single quotes with double quotes
+    let jsonString = str.replace(/'/g, '"');
+
+    // Step 2: Replace spaces between words with commas
+    jsonString = jsonString.replace(/"\s+"/g, '","');
+
+    // Step 3: Parse the JSON string to get the array
+    const array = JSON.parse(jsonString);
+    console.log(array);
+    return array;
+  };
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const token = localStorage.getItem("token");
+      try {
+        const response = await axios.get("/api/user", {
+          headers: {
+            Authorization: `token ${token}`, // Add the token to the request headers
+          },
+        });
+        console.log("--------------------");
+        console.log(response.data);
+        console.log("--------------------");
+        console.log("/////////////////////");
+        console.log(data);
+        console.log("/////////////////////");
+
+        setProfil({
+          name: response.data.username,
+          email: response.data.email,
+          profilePicture: response.data.picture_url,
+        });
+      } catch (error) {
+        console.error("Fetching data failed:", error);
+        setError("Fetching profile data failed");
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchData();
+  }, []);
+
+  if (loading) {
+    return <div>Loading...</div>; // Show loading state while fetching data
+  }
+
+  if (error) {
+    return <div>{error}</div>; // Show error message if fetching fails
+  }
+
+  if (!data) {
+    return <div>No blog data available</div>; // Handle case where blog data is null
+  }
+
   return (
     <div className="bloc-head">
-      <h2>
-        NBA delivers record-breaking season across social, digital platforms.
-      </h2>
-      <h3>
-        Cleveland presents a bigger obstacle than Miami, but Boston remains the
-        heavy favorite as the playoffs continue.
-      </h3>
+      <h2>{data.title}</h2>
       <div className="bloc-img">
-        <img src="../public/bascket.png" alt="" />
+        <img src={data.picture_url} alt="" />
       </div>
       <div className="bloc-info">
         <div className="bloc-info-head">
           <div className="bloc-info-author">
-            <img src="../public/avatar.png" alt="" />
-            <h4>Jogn Doe</h4>
+            {profil && <img src={profil.profilePicture} alt="Author" />}
+            {profil && <h4>{profil.name}</h4>}
           </div>
           <div className="bloc-info-author">
             <h4>06 may 2024</h4>
@@ -23,26 +80,15 @@ function Blogpagehead() {
         </div>
         <div className="bloc-info-foot">
           <ul>
-            <li>
-              <div className="bloc-info-author">
-                <h4>football</h4>
-              </div>
-            </li>
-            <li>
-              <div className="bloc-info-author">
-                <h4>bascketball</h4>
-              </div>
-            </li>
-            <li>
-              <div className="bloc-info-author">
-                <h4>tennis</h4>
-              </div>
-            </li>
-            <li>
-              <div className="bloc-info-author">
-                <h4>golf</h4>
-              </div>
-            </li>
+            {convertStringToArray(data.tags).map((el, id) => {
+              return (
+                <li key={id}>
+                  <div className="bloc-info-author">
+                    <h4>{el}</h4>
+                  </div>
+                </li>
+              );
+            })}
           </ul>
         </div>
       </div>
