@@ -1,0 +1,26 @@
+title: "Champions' Chronicle"
+description: "Your site description."
+baseurl: "/Blog-app/" # le sous-chemin de votre site, par exemple /blog
+url: "http://yourdomain.com" # l'hôte de base et le protocole de votre site
+
+
+exclude:
+  - "node_modules"
+  - "vendor"
+  - ".bundle"
+  - "Gemfile"
+  - "Gemfile.lock"
+  - "README.md"
+
+include:
+  - "_pages"
+  - "_posts"
+  - "assets"
+  - "index.html"
+
+# Configuration du processeur Markdown
+markdown: kramdown
+kramdown:
+  input: GFM
+  syntax_highlighter_opts:
+    block: false
