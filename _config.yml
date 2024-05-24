@@ -1,7 +1,7 @@
 title: "Champions' Chronicle"
 description: "Your site description."
-baseurl: "/Blog-app/" # le sous-chemin de votre site, par exemple /blog
-url: "http://yourdomain.com" # l'hôte de base et le protocole de votre site
+baseurl: "" # le sous-chemin de votre site, par exemple /blog
+url: "" 
 
 
 exclude:
