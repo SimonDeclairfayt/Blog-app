@@ -31,8 +31,8 @@ const BlogPost = () => {
     setTags(e.target.value);
   };
 
-  const handleContentChange = (model) => {
-    setContent(model);
+  const handleDescriptionChange = (model) => {
+    setDescription(model);
   };
 
   const handleSubmit = async (e) => {

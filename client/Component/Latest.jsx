@@ -47,43 +47,6 @@ function Latest() {
             </div>
           );
         })}
-
-        <div onClick={handleClick} className="caroussel-card">
-          <div className="card-img">
-            <img src="/bascket.png" alt="" />
-          </div>
-          <h3>card title</h3>
-        </div>
-        <div onClick={handleClick} className="caroussel-card">
-          <div className="card-img">
-            <img src="/bascket.png" alt="" />
-          </div>
-          <h3>card title</h3>
-        </div>
-        <div onClick={handleClick} className="caroussel-card">
-          <div className="card-img">
-            <img src="/bascket.png" alt="" />
-          </div>
-          <h3>card title</h3>
-        </div>
-        <div onClick={handleClick} className="caroussel-card">
-          <div className="card-img">
-            <img src="/bascket.png" alt="" />
-          </div>
-          <h3>card title</h3>
-        </div>
-        <div onClick={handleClick} className="caroussel-card">
-          <div className="card-img">
-            <img src="/bascket.png" alt="" />
-          </div>
-          <h3>card title</h3>
-        </div>
-        <div onClick={handleClick} className="caroussel-card">
-          <div className="card-img">
-            <img src="/bascket.png" alt="" />
-          </div>
-          <h3>card title</h3>
-        </div>
       </div>
     </div>
   );

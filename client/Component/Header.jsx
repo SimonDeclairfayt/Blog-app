@@ -1,12 +1,26 @@
-import { useState } from "react";
+import { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
-import './Header.css';
-import searchIcon from '../public/icon-loupe-white.svg'; // Import the search icon
+import { SearchContext } from "../src/SearchValue"; // Import the context
+import "./Header.css";
+import searchIcon from "../public/icon-loupe-white.svg"; // Import the search icon
 
 function Header() {
   const [close, setClose] = useState(false);
   const handleClick = () => {
     setIsHeaderVisible(!isHeaderVisible);
+  };
+
+  const { setSearchValue } = useContext(SearchContext); // Use the context
+  const [inputvalue, setInputValue] = useState("");
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setSearchValue(inputValue);
+  };
+
+  const handleChangeInput = (e) => {
+    e.preventDefault();
+    setInputValue(e.target.value);
   };
 
   const [isHeaderVisible, setIsHeaderVisible] = useState(true);
@@ -51,9 +65,9 @@ function Header() {
             <li>
               <Link to="/">Home</Link>
             </li>
-            <li>
+            {/* <li>
               <Link to="/BlogPage">Tags</Link>
-            </li>
+            </li> */}
             <li>
               <Link to="/profile">Profil</Link>
             </li>
@@ -65,8 +79,12 @@ function Header() {
         className="header-right"
         /*style={{ display: isHeaderVisible ? "block" : "none" }}*/
       >
-        <form action="submit">
-          <input type="text" />
+        <form action="submit" onSubmit={handleSubmit}>
+          <input
+            type="text"
+            value={inputvalue}
+            onChange={(e) => setInputValue(e.target.value)}
+          />
           <img src="../public/icon-loupe-white.svg" alt="" />
         </form>
         {!isLoggedIn ? (
