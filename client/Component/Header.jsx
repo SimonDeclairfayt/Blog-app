@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import './Header.css';
 import searchIcon from '../public/icon-loupe-white.svg'; // Import the search icon
