@@ -15,7 +15,7 @@ function Header() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setSearchValue(inputValue);
+    setSearchValue(inputvalue);
   };
 
   const handleChangeInput = (e) => {
@@ -80,11 +80,7 @@ function Header() {
         /*style={{ display: isHeaderVisible ? "block" : "none" }}*/
       >
         <form action="submit" onSubmit={handleSubmit}>
-          <input
-            type="text"
-            value={inputvalue}
-            onChange={(e) => setInputValue(e.target.value)}
-          />
+          <input type="text" value={inputvalue} onChange={handleChangeInput} />
           <img src="../public/icon-loupe-white.svg" alt="" />
         </form>
         {!isLoggedIn ? (

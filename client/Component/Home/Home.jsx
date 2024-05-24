@@ -34,6 +34,7 @@ function Home() {
   const [ownblogs, setOwnBlogs] = useState(null);
   const [footb, setFootb] = useState(null);
   const [basketb, setBasketb] = useState(null);
+  const [filteredBlogs, setFilteredBlogs] = useState(null);
 
   const { searchValue } = useContext(SearchContext); // Use the context
 
@@ -51,9 +52,7 @@ function Home() {
 
     fetchData();
   }, []);
-  // const filteredData = data[profil].filter((item) =>
-  //   item.category.toLowerCase().includes(searchValue.toLowerCase())
-  // );
+
   const filterData = () => {
     let l = null;
     try {
@@ -107,11 +106,6 @@ function Home() {
     return filteredData;
   };
 
-  // Add data and profil to dependency array to trigger the effect when they change
-
-  // Log the filtered data before setting ownblogs
-  // Make sure 'filterData' function doesn't cause re-renders on every render
-  // Log the updated value of ownblogs inside the useEffect hook
   useEffect(() => {
     console.log("-------------------------------------");
     const foot = filterDataByTags("football");
@@ -122,24 +116,37 @@ function Home() {
     setOwnBlogs(n);
     console.log("Updated ownblogs:", ownblogs);
   }, [data]);
+
+  useEffect(() => {
+    if (searchValue) {
+      const filtered = filterDataByTags(searchValue);
+      setFilteredBlogs(filtered);
+    } else {
+      setFilteredBlogs(null);
+    }
+  }, [searchValue, data]);
   return (
     <ErrorBoundary>
       <div className="home">
-        {ownblogs !== null ? (
-          <Categorys name={"My blogs"} data={ownblogs} />
+        {searchValue && filteredBlogs !== null ? (
+          <Categorys
+            name={`Search results for "${searchValue}"`}
+            data={filteredBlogs}
+          />
         ) : (
-          ""
+          <>
+            {ownblogs !== null && (
+              <Categorys name={"My blogs"} data={ownblogs} />
+            )}
+            {footb !== null && (
+              <Categorys name={"Football"} data={footb} reverse={true} />
+            )}
+            {basketb !== null && (
+              <Categorys name={"Basketball"} data={basketb} />
+            )}
+          </>
         )}
-        {footb !== null ? (
-          <Categorys name={"Football"} data={footb} reverse={true} />
-        ) : (
-          ""
-        )}
-        {basketb !== null ? (
-          <Categorys name={"Basketball"} data={basketb} />
-        ) : (
-          ""
-        )}
+
         {/* <Categorys name="Basket" data={data} />
         <Categorys name="Football" reverse={true} data={data} />
         <Categorys name="Tennis" data={data} /> */}
