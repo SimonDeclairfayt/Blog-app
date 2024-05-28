@@ -80,7 +80,12 @@ function Header() {
         /*style={{ display: isHeaderVisible ? "block" : "none" }}*/
       >
         <form action="submit" onSubmit={handleSubmit}>
-          <input type="text" value={inputvalue} onChange={handleChangeInput} />
+          <input
+            type="text"
+            placeholder="Chearch by Tags..."
+            value={inputvalue}
+            onChange={handleChangeInput}
+          />
           <img src="../public/icon-loupe-white.svg" alt="" />
         </form>
         {!isLoggedIn ? (

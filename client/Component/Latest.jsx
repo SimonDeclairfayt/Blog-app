@@ -8,6 +8,7 @@ function Latest() {
   const handleClick = (id) => {
     if (id) {
       console.log(id); // Log the id directly
+      window.scrollTo({ top: 0, behavior: "smooth" });
       navigate(`/blog/${id}`);
     }
   };
