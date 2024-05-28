@@ -5,7 +5,7 @@ import axios from "axios";
 import { useState, useEffect, useMemo } from "react";
 import Blogpagehead from "./Blogpagehead";
 import Blogpagecontent from "./Blogpagecontent";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 
 function Blogpage() {
   const [liked, setLiked] = useState(false);
@@ -16,8 +16,10 @@ function Blogpage() {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true); // Added loading state
   const [error, setError] = useState(null); // Added error state
+  const [currentUser, setCurrentUser] = useState(null);
 
   const { id } = useParams();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -32,6 +34,7 @@ function Blogpage() {
             Authorization: `token ${token}`, // Add the token to the request headers
           },
         });
+        setCurrentUser(response.data);
         console.log("Response:", response); // Log the entire response object
         console.log("Data:", response.data);
         setData(response.data[0]);
@@ -45,6 +48,24 @@ function Blogpage() {
     fetchData();
   }, [id]);
 
+  const handleModify = () => {
+    navigate(`/blogpost`, { state: { blogData: data } });
+  };
+
+  const handleRemove = async () => {
+    const token = localStorage.getItem("token");
+    try {
+      await axios.delete(`/api/blog/${id}/delete`, {
+        headers: {
+          Authorization: `token ${token}`,
+        },
+      });
+      navigate("/"); // Redirect to home or any other page after deletion
+    } catch (error) {
+      console.error("Failed to delete blog post:", error);
+    }
+  };
+
   if (loading) {
     return <div>Loading...</div>; // Show loading state while fetching data
   }
@@ -56,6 +77,8 @@ function Blogpage() {
   if (!data) {
     return <div>No data available</div>; // Handle case where data is null
   }
+
+  const isOwner = localStorage.getItem("id") == data.user; // Adjust this condition based on your data structure
 
   // // Memoize the data transformation (if any)
   // const memoizedData = useMemo(() => {
@@ -69,6 +92,17 @@ function Blogpage() {
     <>
       <div className="blogpage-bloc">
         <Blogpagehead data={data} />
+        {isOwner && (
+          <div className="container-spec-but">
+            <button className="spec-but" onClick={handleModify}>
+              Modify
+            </button>
+            <button className="spec-but" onClick={handleRemove}>
+              Remove
+            </button>
+          </div>
+        )}
+
         <Blogpagecontent
           data={data}
           handleClickLike={handleClickLike}

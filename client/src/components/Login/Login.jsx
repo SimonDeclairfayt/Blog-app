@@ -33,6 +33,7 @@ const Login = () => {
       localStorage.setItem("token", token);
       localStorage.setItem("id", user.id);
       localStorage.setItem("email", user.email);
+      localStorage.setItem("username", user.username);
 
       if (user.id && token) {
         console.log(user.id, token);

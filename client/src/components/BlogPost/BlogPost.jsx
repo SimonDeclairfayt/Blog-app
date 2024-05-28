@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./BlogPost.css";
-import { Link } from "react-router-dom"; // Import Link
+import { Link, useLocation } from "react-router-dom"; // Import Link
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faUser,
@@ -14,10 +14,28 @@ import "froala-editor/css/froala_editor.pkgd.min.css";
 import FroalaEditorComponent from "react-froala-wysiwyg";
 
 const BlogPost = () => {
+  const location = useLocation();
+  const blogData = location.state?.blogData;
+
   const [file, setFile] = useState(null);
   const [title, setTitle] = useState("");
   const [tags, setTags] = useState("");
   const [description, setDescription] = useState("");
+
+  const convertTagsToString = (tagsString) => {
+    // Convert the tags string to an array
+    const tagsArray = JSON.parse(tagsString.replace(/'/g, '"'));
+    // Join the array elements with a space
+    return tagsArray.join(" ");
+  };
+
+  useEffect(() => {
+    if (blogData) {
+      setTitle(blogData.title);
+      setTags(convertTagsToString(blogData.tags));
+      setDescription(blogData.content);
+    }
+  }, [blogData]);
 
   const handleFileChange = (e) => {
     setFile(e.target.files[0]);
@@ -53,11 +71,28 @@ const BlogPost = () => {
     }
     const token = localStorage.getItem("token");
     try {
-      const response = await axios.post("/api/blog", formData, {
-        headers: {
-          Authorization: `token ${token}`, // Add the token to the request headers
-        },
-      });
+      let response = null;
+      if (blogData) {
+        // Edit existing blog post
+        response = await axios.patch(
+          `/api/blog/${blogData.id}/update`,
+          formData,
+          {
+            headers: {
+              Authorization: `token ${token}`,
+            },
+          }
+        );
+        console.log("Blog post updated successfully");
+      } else {
+        // Create new blog post
+        response = await axios.post("/api/blog", formData, {
+          headers: {
+            Authorization: `token ${token}`,
+          },
+        });
+        console.log("Blog post created successfully");
+      }
 
       console.log("Blog post created successfully:", response.data);
       // Reset form fields
@@ -106,7 +141,9 @@ const BlogPost = () => {
           </div>
         </div>
         <div className="rightsidecontainer">
-          <h2 className="canp">Create a new post</h2>
+          <h2 className="canp">
+            {blogData ? "Edit your post" : "Create a new post"}
+          </h2>
           <h3 className="tt">Title:</h3>
           <input
             className="title-textarea"
@@ -114,7 +151,7 @@ const BlogPost = () => {
             value={title}
             onChange={handleTitleChange}
           />
-          <h3 className="cyi">Tags (comma separated):</h3>
+          <h3 className="cyi">Tags (separated by a space):</h3>
           <input
             className="tags-input"
             placeholder="Enter tags here..."
@@ -131,7 +168,7 @@ const BlogPost = () => {
               onModelChange={handleDescriptionChange}
             />
             <button type="submit" onClick={handleSubmit} className="syp">
-              Submit your post!
+              {blogData ? "Update your post" : "Submit your post!"}{" "}
             </button>
           </div>
         </div>

@@ -5,6 +5,7 @@ function Blogpagehead({ data }) {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
+  console.log("HEY DATA IS HERE:", data);
   const convertStringToArray = (str) => {
     console.log("-----------datas from bloghead: " + data);
     // Step 1: Replace single quotes with double quotes
@@ -72,7 +73,13 @@ function Blogpagehead({ data }) {
         <div className="bloc-info-head">
           <div className="bloc-info-author">
             {profil && <img src={profil.profilePicture} alt="Author" />}
-            {profil && <h4>{profil.name}</h4>}
+            {profil && (
+              <h4>
+                {data.user == localStorage.getItem("id")
+                  ? localStorage.getItem("username")
+                  : "user: " + data.user}
+              </h4>
+            )}
           </div>
           <div className="bloc-info-author">
             <h4>06 may 2024</h4>
