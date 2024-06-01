@@ -8,6 +8,7 @@ import Categorys from "../Component/Home/Categorys";
 import Register from "./components/Register/Register";
 import Latest from "../Component/Latest";
 import BlogPost from "./components/BlogPost/BlogPost";
+import { SearchProvider } from "./SearchValue"; // Import the SearchProvider
 import "./App.css";
 import Dashboard from "./components/Dashboard/Dashboard";
 import Profile from "./components/Profile/Profile";
@@ -15,18 +16,20 @@ import Profile from "./components/Profile/Profile";
 const App = () => {
   return (
     <>
-      <Router>
-        <Header />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/blogpost" element={<BlogPost />} />
-          <Route path="/dashboard" element={<Dashboard />} />
-          <Route path="/profile" element={<Profile />} />
-          <Route path="/register" element={<Register />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/blog/:id" element={<Blogpage />} />
-        </Routes>
-      </Router>
+      <SearchProvider>
+        <Router>
+          <Header />
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/blogpost" element={<BlogPost />} />
+            <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/profile" element={<Profile />} />
+            <Route path="/register" element={<Register />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/blog/:id" element={<Blogpage />} />
+          </Routes>
+        </Router>
+      </SearchProvider>
     </>
   );
 };

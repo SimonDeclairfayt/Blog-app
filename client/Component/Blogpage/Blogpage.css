@@ -2,6 +2,26 @@
   color: white;
   background-color: #222831;
   padding: 100px 260px;
+  .container-spec-but {
+    display: flex;
+    flex-direction: row;
+    .spec-but {
+      display: flex;
+      align-items: center;
+      justify-content: space-evenly;
+      background-color: #ffd369;
+      color: black;
+      width: 65px;
+      height: 30px;
+      border-radius: var(--radius-md);
+    }
+    .spec-but:hover {
+      cursor: pointer;
+      border: solid 2.5px white;
+      color: white;
+      background-color: #222831;
+    }
+  }
 }
 
 .bloc-head {
@@ -49,7 +69,11 @@
   }
   .bloc-info-foot ul {
     display: flex;
+    margin-left: 0px;
     gap: 12.5px;
+    li {
+      margin-left: 0px;
+    }
     li .bloc-info-author {
       background-color: #393e46;
       color: white;

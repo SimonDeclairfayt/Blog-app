@@ -27,57 +27,54 @@ const Register = () => {
     }
   };
 
-
   return (
     <form onSubmit={handleSubmit}>
-  <div className="main">
-    <div className="whitecontainerregister">
-      <h1>Register</h1>
-      <div className="gtsya">
-        Discover our best plans to post your daily blogs and become famous with us!
+      <div className="main">
+        <div className="whitecontainerregister">
+          <h1>Register</h1>
+          <div className="gtsya">
+            Discover our best plans to post your daily blogs and become famous
+            with us!
+          </div>
+          <div className="input-container">
+            <p className="infos">Your email</p>
+            <input
+              className="ourinfo"
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              placeholder="E-mail"
+              required
+            />
+          </div>
+          <div className="input-container">
+            <p className="infos">Username</p>
+            <input
+              type="text"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+              placeholder="Username"
+              required
+            />
+          </div>
+          <div className="input-container">
+            <p className="infos">Password</p>
+            <input
+              type="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              placeholder="Password"
+              required
+            />
+          </div>
+          <button className="submitbutton" type="submit">
+            Register
+            <FontAwesomeIcon icon={faArrowRightToBracket} className="icon" />
+          </button>
+        </div>
       </div>
-      <div className="input-container">
-        <p className="infos">Your email</p>
-        <input
-          className="ourinfo"
-          type="email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          placeholder="E-mail"
-          required
-        />
-      </div>
-      <div className="input-container">
-        <p className="infos">Username</p>
-        <input
-          type="text"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
-          placeholder="Username"
-          required
-        />
-      </div>
-      <div className="input-container">
-        <p className="infos">Password</p>
-        <input
-          type="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          placeholder="Password"
-          required
-        />
-      </div>
-      <button className="submitbutton" type="submit">
-        Register
-        <FontAwesomeIcon icon={faArrowRightToBracket} className="icon" />
-      </button>
-    </div>
-    
-  </div>
-</form>
-
+    </form>
   );
 };
-
 
 export default Register;
